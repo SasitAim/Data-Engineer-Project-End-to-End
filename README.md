@@ -152,13 +152,14 @@ MODIFY COLUMN slope_description VARCHAR (10);
 USE PJDB
 
 SELECT *
-FROM thai_road_acc ;
+FROM thai_rac ;
 
 -- QUESTION
 
 -- Q1 How many accidents occurred in each year?
+-- number of accidents that occurred each year.
 SELECT YEAR(incident_date_n) AS year, COUNT(*) AS count_acc
-FROM thai_road_acc
+FROM thai_rac
 WHERE YEAR(incident_date_n) IN (2019, 2020, 2021, 2022)
 GROUP BY YEAR(incident_date_n)
 ORDER BY YEAR(incident_date_n);
@@ -166,12 +167,12 @@ ORDER BY YEAR(incident_date_n);
 
 --Q2 The top 10 provinces with the highest number of accidents and the 10 provinces with the lowest number of accidents.
 SELECT TOP 10 province_en, COUNT(province_en) AS count_acc
-FROM thai_road_acc 
+FROM thai_rac 
 GROUP BY province_en
 ORDER BY count_acc DESC;
 
 SELECT TOP 10 province_en, COUNT(province_en) AS count_acc
-FROM thai_road_acc
+FROM thai_rac
 WHERE province_en != 'unknown'
 GROUP BY province_en
 ORDER BY count_acc ;
@@ -187,10 +188,10 @@ SELECT
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '17:00:01' AND '20:00:00' THEN 'Evening'
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '20:00:01' AND '23:59:59' THEN 'Night'
 		ELSE 'Other time'
-	END AS  time_period,
-	COUNT(*) AS count_acc
+	END AS  Time_period,
+	COUNT(*) AS Number_of_accident
 
-FROM thai_road_acc
+FROM thai_rac
 GROUP BY 
 	CASE
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '00:00:00' AND '05:00:00' THEN 'Night'
@@ -203,27 +204,28 @@ GROUP BY
 
 
 --Q4 The highest number of jointly involved vehicle accidents.
-SELECT number_of_vehicles_involved, COUNT(number_of_vehicles_involved) AS count
-FROM thai_road_acc 
+SELECT number_of_vehicles_involved, COUNT(number_of_vehicles_involved) AS Number_of_accident
+FROM thai_rac 
 GROUP BY number_of_vehicles_involved 
-ORDER BY number_of_vehicles_involved DESC;
+ORDER BY number_of_vehicles_involved ;
 
 
 --Q5 Which weather conditions have the highest number of accidents?
 -- Total accident in each weather condition.
-SELECT weather_condition, COUNT(weather_condition) AS count_acc
-FROM thai_road_acc
+SELECT weather_condition, COUNT(weather_condition) AS Number_of_accident
+FROM thai_rac
 GROUP BY weather_condition
-ORDER BY count_acc ;
+ORDER BY Number_of_accident ;
 
 
 --Q6 Which type of road has the highest number of accidents?
 -- Total accidents in each road type. 
-SELECT road_description, COUNT(road_description) AS count_acc
-FROM thai_road_acc
+SELECT road_description, COUNT(road_description) AS Number_of_accident
+FROM thai_rac
 WHERE road_description != 'other'
 GROUP BY road_description
-ORDER BY count_acc ;
+ORDER BY Number_of_accident ;
+
 
 
 --Q7 Number of injuries and fatalities each year.
@@ -232,7 +234,7 @@ SELECT
 	YEAR(incident_date_n) AS Year_acc,
 	MONTH(incident_date_n) AS Month_acc,
 	COUNT(*) AS number_of_accident
-FROM thai_road_acc
+FROM thai_rac
 GROUP BY YEAR(incident_date_n), MONTH(incident_date_n)
 ORDER BY Year_acc, Month_acc;
 
@@ -241,7 +243,7 @@ SELECT
 	YEAR(incident_date_n) AS Year_acc,
 	MONTH(incident_date_n) AS Month_acc,
 	SUM(number_of_injuries) AS number_of_injuries
-FROM thai_road_acc
+FROM thai_rac
 GROUP BY YEAR(incident_date_n), MONTH(incident_date_n)
 ORDER BY Year_acc, Month_acc;
 
@@ -250,17 +252,28 @@ SELECT
 	YEAR(incident_date_n) AS Year_acc,
 	MONTH(incident_date_n) AS Month_acc,
 	SUM(number_of_fatalities) AS number_of_fatalities
-FROM thai_road_acc
+FROM thai_rac
 GROUP BY YEAR(incident_date_n), MONTH(incident_date_n)
 ORDER BY Year_acc, Month_acc;
 
 
 
 --Q8 Which type of accidents occurs most frequently?
-SELECT accident_type, COUNT(accident_type) AS total_acc
-FROM thai_road_acc
+SELECT accident_type, COUNT(accident_type) AS number_accident
+FROM thai_rac
 GROUP BY accident_type
-ORDER BY total_acc DESC ;
+ORDER BY number_accident DESC ;
+
+
+-- Total accident in each province
+SELECT 
+	province_en,
+	COUNT (*) AS number_accident
+
+FROM thai_rac
+WHERE province_en != 'unknown'
+GROUP BY province_en
+ORDER BY province_en ;
 
 
 
