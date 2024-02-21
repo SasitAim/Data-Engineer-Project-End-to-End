@@ -221,9 +221,9 @@ ORDER BY count_acc ;
 -- Total accidents in each road type. 
 SELECT road_description, COUNT(road_description) AS count_acc
 FROM thai_road_acc
+WHERE road_description != 'other'
 GROUP BY road_description
 ORDER BY count_acc ;
-
 
 
 --Q7 Number of injuries and fatalities each year.
