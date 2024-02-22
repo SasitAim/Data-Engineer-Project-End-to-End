@@ -180,7 +180,10 @@ ORDER BY Number_of_accident ;
 
 --Q3  During which time periods do accidents occur most frequently?
 -- Total accident in each time of day.
+
 SELECT 
+	YEAR(incident_date_n) AS Year_N,
+	MONTH(incident_date_n) AS Month_N,	
 	CASE
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '00:00:00' AND '05:00:00' THEN 'Night'
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '05:00:01' AND '12:00:00' THEN 'Morning'
@@ -192,7 +195,8 @@ SELECT
 	COUNT(*) AS Number_of_accident
 
 FROM thai_rac
-GROUP BY 
+GROUP BY YEAR(incident_date_n),MONTH(incident_date_n),
+
 	CASE
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '00:00:00' AND '05:00:00' THEN 'Night'
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '05:00:01' AND '12:00:00' THEN 'Morning'
@@ -200,7 +204,10 @@ GROUP BY
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '17:00:01' AND '20:00:00' THEN 'Evening'
 		WHEN CAST(incident_datetime AS TIME) BETWEEN '20:00:01' AND '23:59:59' THEN 'Night'
 		ELSE 'Other time'
-	END ;
+	END
+
+ORDER BY Year_N, Month_N;
+
 
 
 --Q4 The highest number of jointly involved vehicle accidents.
