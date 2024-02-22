@@ -256,6 +256,16 @@ FROM thai_rac
 GROUP BY YEAR(incident_date_n), MONTH(incident_date_n)
 ORDER BY Year_acc, Month_acc;
 
+-- all accident, injuries and fatalities
+SELECT 
+	YEAR(incident_date_n) AS Year,
+	MONTH(incident_date_n) AS Month,
+	SUM(number_of_fatalities) AS number_of_fatalities,
+	SUM(number_of_injuries) AS number_of_injuries,
+	SUM(number_of_fatalities) AS number_of_fatalities
+FROM thai_rac
+GROUP BY YEAR(incident_date_n), MONTH(incident_date_n)
+ORDER BY Year, Month;
 
 
 --Q8 Which type of accidents occurs most frequently?
