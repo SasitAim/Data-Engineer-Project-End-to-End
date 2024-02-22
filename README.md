@@ -158,7 +158,7 @@ FROM thai_rac ;
 
 -- Q1 How many accidents occurred in each year?
 -- number of accidents that occurred each year.
-SELECT YEAR(incident_date_n) AS year, COUNT(*) AS count_acc
+SELECT YEAR(incident_date_n) AS year, COUNT(*) AS Number_of_accident
 FROM thai_rac
 WHERE YEAR(incident_date_n) IN (2019, 2020, 2021, 2022)
 GROUP BY YEAR(incident_date_n)
@@ -166,12 +166,12 @@ ORDER BY YEAR(incident_date_n);
 
 
 --Q2 The top 10 provinces with the highest number of accidents and the 10 provinces with the lowest number of accidents.
-SELECT TOP 10 province_en, COUNT(province_en) AS count_acc
+SELECT TOP 10 province_en, COUNT(province_en) AS Number_of_accident
 FROM thai_rac 
 GROUP BY province_en
 ORDER BY count_acc DESC;
 
-SELECT TOP 10 province_en, COUNT(province_en) AS count_acc
+SELECT TOP 10 province_en, COUNT(province_en) AS Number_of_accident
 FROM thai_rac
 WHERE province_en != 'unknown'
 GROUP BY province_en
