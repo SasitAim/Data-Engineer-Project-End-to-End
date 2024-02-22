@@ -169,13 +169,13 @@ ORDER BY YEAR(incident_date_n);
 SELECT TOP 10 province_en, COUNT(province_en) AS Number_of_accident
 FROM thai_rac 
 GROUP BY province_en
-ORDER BY count_acc DESC;
+ORDER BY Number_of_accident DESC;
 
 SELECT TOP 10 province_en, COUNT(province_en) AS Number_of_accident
 FROM thai_rac
 WHERE province_en != 'unknown'
 GROUP BY province_en
-ORDER BY count_acc ;
+ORDER BY Number_of_accident ;
 
 
 --Q3  During which time periods do accidents occur most frequently?
