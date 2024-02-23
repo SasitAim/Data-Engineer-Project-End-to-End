@@ -1,6 +1,8 @@
 # Data-Engineer-Project-End-to-End
-Data Engineer Project end to end with public dataset thai_road_accident_2019_2022
 
+## Table of contents
+- [Project Overview](#Project-Overview)
+- [Answer a question](#Answer-a-question)
 
 
 ### Project Overview
@@ -22,7 +24,9 @@ This data engineer ETL project will begin by importing a public dataset (Thai ro
 7. Number of injuries and fatalities each year.
 8. Which type of accidents occurs most frequently?
 
-### Step 1 Create database in MySQL and import data. 
+
+## Import Data to MySQL.
+### Create database in MySQL and import data. 
 ```sql
 -- First create database 
 CREATE DATABASE datade ;
@@ -57,6 +61,7 @@ data_dir
 os.listdir(data_dir)
 
 ```
+
 
 ### Create data frame and Connect database
 ```python
@@ -100,7 +105,7 @@ engine.dispose()
 ```
 
 
-### Step 2 Cleaning data in MySQL.
+### Cleaning data in MySQL.
 ```sql
 -- SELECT database
 USE datade ;
@@ -143,11 +148,11 @@ MODIFY COLUMN road_description VARCHAR (36),
 MODIFY COLUMN slope_description VARCHAR (10);
 ```
 
-### Step 3 Extract, transform and load (ETL) with SSIS.
+## Extract, transform and load (ETL) with SSIS.
 
 
 
-### Step 4 Answer a question in SSMS.
+## Answer a question in SSMS.
 ```sql
 USE PJDB
 
@@ -291,6 +296,19 @@ WHERE province_en != 'unknown'
 GROUP BY province_en
 ORDER BY province_en ;
 
-
-
 ```
+Ans 1.  
+
+Ans 2. 
+
+Ans 3. 
+
+Ans 4.  
+
+Ans 5. 
+
+Ans 6.
+
+Ans 7. 
+
+Ans 8.
