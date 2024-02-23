@@ -1,8 +1,5 @@
 # Data-Engineer-Project-End-to-End
 
-## Table of contents
-- [Project Overview](#Project-Overview)
-- [Answer a question](#Answer-a-question)
 
 
 ### Project Overview
