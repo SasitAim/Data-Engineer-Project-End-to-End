@@ -11,6 +11,9 @@ This data engineer ETL project will begin by importing a public dataset (Thai ro
 - MySQL
 - PowerBI
 
+### Data source from Kaggle public datasets.
+https://www.kaggle.com/datasets/thaweewatboy/thailand-road-accident-2019-2022?select=thai_road_accident_2019_2022.csv
+
 ### Questions
 1. How many accidents occurred in each year?
 2. The top 10 provinces with the highest number of accidents and the 10 provinces with the lowest number of accidents.
@@ -216,7 +219,7 @@ ORDER BY Year_N, Month_N;
 SELECT number_of_vehicles_involved, COUNT(number_of_vehicles_involved) AS Number_of_accident
 FROM thai_rac 
 GROUP BY number_of_vehicles_involved 
-ORDER BY number_of_vehicles_involved ;
+ORDER BY number_of_vehicles_involved DESC;
 
 
 --Q5 Which weather conditions have the highest number of accidents?
@@ -224,7 +227,7 @@ ORDER BY number_of_vehicles_involved ;
 SELECT weather_condition, COUNT(weather_condition) AS Number_of_accident
 FROM thai_rac
 GROUP BY weather_condition
-ORDER BY Number_of_accident ;
+ORDER BY Number_of_accident DESC ;
 
 
 --Q6 Which type of road has the highest number of accidents?
@@ -233,7 +236,7 @@ SELECT road_description, COUNT(road_description) AS Number_of_accident
 FROM thai_rac
 WHERE road_description != 'other'
 GROUP BY road_description
-ORDER BY Number_of_accident ;
+ORDER BY Number_of_accident DESC ;
 
 
 
@@ -294,18 +297,20 @@ GROUP BY province_en
 ORDER BY province_en ;
 
 ```
-Ans 1.  
 
-Ans 2. 
+### Answer the question.
+Ans 1. The number of accidents in the year 2019 was 19,194, in 2020 it was 21,052, in 2021 it was 20,457, and in 2022 it was 21,032.
 
-Ans 3. 
+Ans 2. The top 10 provinces with the highest number of accidents are Bangkok, Chon Buri, Chiang Mai, Nakhon Ratchasima, Suphan Buri, Samut Prakan, Surat Thani, Pathum Thani, Tak and Phetchabun. The top 10 provinces with the lowest accidents are Ranong, Amnat Charoen, Phichit, Nong Bua Lam Phu, Nong Khai, Mae Hong Son, Satun, Buri Ram, Phangnga and Yala.
 
-Ans 4.  
+Ans 3. Morning and night are the periods with the highest number of accidents, with 24,247 in the morning and 24,203 at night.
 
-Ans 5. 
+Ans 4. 27 vehicles represent the highest number of jointly involved vehicles in accidents.
 
-Ans 6.
+Ans 5. Clear weather is the condition with the highest number of accidents, totaling 69,943.
 
-Ans 7. 
+Ans 6. Straight roads are the road type with the highest number of accidents, totaling 58,183.
 
-Ans 8.
+Ans 7. In 2019, there were 17,663 injuries and 3,223 fatalities. In 2020, there were 17,417 injuries and 3,294 fatalities. In 2021, there were 15,108 injuries and 2,726 fatalities. In 2022, there were 16,169 injuries and 2,655 fatalities.
+
+Ans 8. Rollover/fallen accidents on straight roads are the most frequent accidents.
