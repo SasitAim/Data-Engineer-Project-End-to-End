@@ -149,7 +149,9 @@ MODIFY COLUMN slope_description VARCHAR (10);
 ```
 
 ## Extract, transform and load (ETL) with SSIS.
+In part of ETL with SSIS, you can read the article on the steps of performing ETL on My Medium.
 
+https://medium.com/@sasitpiasai02/data-engineer-end-to-end-project-part-etl-with-ssis-9466fa193a4b
 
 
 ## Answer a question in SSMS.
